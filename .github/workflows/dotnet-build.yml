@@ -7,21 +7,23 @@ on:
   pull_request:
       - main
   schedule:
-    - cron: '15 14 1 * *'
+    - cron: '0 0 * * *'
+
 jobs:
   build:
-    runs-on: ubuntu-latest
-  steps:
-    - name: checkout project
-      uses: actions/checkout@v4
+      runs-on: ubuntu-latest
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-
-    - name: Restore dependencies
-      run: dotnet restore **/*.csproj
-      
-    - name: Build
-      run: dotnet build **/*.csproj --no-restore
+      steps:
+        - name: checkout project
+          uses: actions/checkout@v4
+    
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: 8.0.x
+    
+        - name: Restore dependencies
+          run: dotnet restore **/*.csproj
+          
+        - name: Build
+          run: dotnet build **/*.csproj --no-restore
