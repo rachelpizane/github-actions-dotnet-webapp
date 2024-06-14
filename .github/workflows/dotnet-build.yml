@@ -2,16 +2,15 @@ name: github4women_M4
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+      - main
   schedule:
     - cron: '15 14 1 * *'
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
   steps:
     - name: checkout project
       uses: actions/checkout@v4
